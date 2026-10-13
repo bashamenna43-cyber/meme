@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menna & Mohiy — Our Tokyo Adventure</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Inter:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1230;--navy2:#16204a;--cream:#f7efe0;--gold:#d4b36a;--pink:#f4b6c8;--ink:#f7efe0}
+:root[data-theme=light]{--ink:#f7efe0}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--navy);color:var(--ink);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{min-height:100vh;background:radial-gradient(ellipse at 50% 0,#2a2f6b 0,var(--navy) 60%) fixed}
+.petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.petals i{position:absolute;top:-20px;width:10px;height:8px;background:var(--pink);border-radius:80% 0 80% 0;opacity:.6;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:20px 18px 60px}
+h1,h2{font-family:'Playfair Display',serif;font-weight:600}
+.tag{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+.screen{display:none;animation:in .7s ease}.screen.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.scene{height:210px;border-radius:18px;overflow:hidden;position:relative;margin:14px 0;border:1px solid #d4b36a55;box-shadow:0 10px 40px #0008}
+.scene svg{width:100%;height:100%;display:block}
+.card{background:#ffffff0d;border:1px solid #d4b36a44;border-radius:18px;padding:20px;backdrop-filter:blur(6px);margin-top:14px}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 .85rem Inter;letter-spacing:.12em;padding:14px 22px;border-radius:40px;background:linear-gradient(135deg,var(--gold),#f0d9a0);color:var(--navy);text-decoration:none;margin-top:14px;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px #d4b36a55}
+.btn.ghost{background:transparent;color:var(--cream);border:1px solid var(--gold)}
+.btn[disabled]{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+textarea,input{width:100%;margin-top:10px;padding:12px;border-radius:12px;border:1px solid #d4b36a66;background:#0b123099;color:var(--cream);font:1rem Inter}
+textarea{min-height:90px;resize:vertical}
+.hero{text-align:center;padding-top:6vh}
+.hero h1{font-size:clamp(2.4rem,11vw,3.6rem);margin:12px 0 4px}
+.hero h2{font-style:italic;color:var(--pink);font-size:1.5rem}
+.hero p{margin-top:16px;line-height:1.6;opacity:.9}
+.msg{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;margin-top:26px;color:var(--gold)}
+.prog{display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.prog b{flex:1;height:5px;border-radius:5px;background:#ffffff22}.prog b.d{background:var(--gold)}.prog b.c{background:var(--pink)}
+.q{font-family:'Playfair Display',serif;font-size:1.15rem;line-height:1.5;margin-top:6px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.final{text-align:center;white-space:pre-line;line-height:1.75}
+.reveal{margin-top:20px;font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--pink);animation:in 1s}
+.bp{display:flex;border-radius:16px;overflow:hidden;background:var(--cream);color:var(--navy);margin:14px 0;box-shadow:0 10px 30px #0008}
+.bp .m{flex:1;padding:16px;min-width:0}.bp .s{width:118px;background:var(--gold);padding:12px;text-align:center;border-left:2px dashed var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.bp h3{font-family:'Playfair Display',serif;font-size:1.5rem}
+.bp .r{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}.bp .r div{font:.6rem 'Space Mono';letter-spacing:.1em}.bp .r span{display:block;font-size:.95rem;font-weight:700;margin-top:2px}
+.qr{width:94px;height:94px;background:#fff;display:flex;align-items:center;justify-content:center;font:.55rem 'Space Mono';color:#555;padding:4px;text-align:center}
+.qr img,.qr canvas{max-width:100%}
+.top{display:flex;justify-content:space-between;align-items:center}
+.small{font-size:.8rem;opacity:.75;line-height:1.5;margin-top:8px}
+</style></head><body>
+<div class="petals" id="petals"></div>
+<div class="wrap">
+<div class="top"><span class="tag">✈ Menna & Mohiy</span><button class="btn ghost" style="margin:0;padding:8px 14px;font-size:.7rem" onclick="go('passes')">🎫 PASSES</button></div>
+
+<section class="screen on" id="welcome"><div class="hero">
+<div class="scene" data-scene="night"></div>
+<div class="tag">Boarding Pass — Destination: Japan 🇯🇵</div>
+<h1>Menna & Mohiy</h1><h2>Our Tokyo Adventure</h2>
+<p>Two passengers. One imaginary trip. And a little adventure made just for us.</p>
+<div class="msg">Dear Mohiy, your co-pilot is waiting for you. Ready to take off?</div>
+<button class="btn" onclick="go(1)">LET'S TAKE OFF ✈️</button></div></section>
+
+<section class="screen" id="s1"></section><section class="screen" id="s2"></section><section class="screen" id="s3"></section>
+
+<section class="screen" id="final">
+<div class="scene" data-scene="night"></div>
+<div class="card final"><h2>One Last Thing, Mohiy ❤️</h2><br>We may not be in Tokyo right now, but I still wanted to take you somewhere new — even if it's just through a screen.
+
+Maybe one day, we'll replace this little virtual adventure with a real boarding pass. Until then, you're my favorite travel partner. 🫶🏻
+
+<i>— Your co-pilot, Menna</i></div>
+<div style="text-align:center"><button class="btn" id="nextBtn" onclick="document.getElementById('rev').style.display='block';this.disabled=true">OUR NEXT ADVENTURE? ✈️</button>
+<div class="reveal" id="rev" style="display:none">Anywhere in the world, as long as it's with you. ❤️</div></div>
+<div class="nav" style="justify-content:center"><button class="btn ghost" onclick="go('passes')">🎫 OUR BOARDING PASSES</button><button class="btn ghost" onclick="go(1)">↺ REVISIT THE TRIP</button></div></section>
+
+<section class="screen" id="passes">
+<div class="tag">Screenshot & save</div><h2 style="margin-top:6px">Our Boarding Passes</h2>
+<div id="bps"></div>
+<div class="card"><b>QR code → our website</b>
+<p class="small">After you publish, paste the final website link here. The QR below is generated live from exactly what you paste. Until then it stays a labeled placeholder.</p>
+<input id="url" type="url" placeholder="https://claude.ai/…  (paste published link)" oninput="mkQR()">
+<p class="small">Then screenshot each pass.</p></div>
+<div class="nav"><button class="btn ghost" onclick="go('welcome')">← BACK TO START</button></div></section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+var mem={};
+function sg(k){try{var v=localStorage.getItem(k);if(v!==null)return v}catch(e){}return mem[k]||''}
+function ss(k,v){mem[k]=v;try{localStorage.setItem(k,v)}catch(e){}}
+var stops=[
+{n:1,t:'Shibuya Crossing',e:'🌃',sc:'shibuya',q:'Shibuya Crossing, Tokyo',
+ intro:"One of the busiest crossings on Earth. When the lights turn red, hundreds of people cross at once under giant neon screens. It's loud, glowing, and wonderfully alive — the perfect place to start our trip.",
+ ch:'If we were standing here together, what would our first picture look like? 📸',ph:'Describe our first picture together…',btn:'CONTINUE TO AKIHABARA →'},
+{n:2,t:'Akihabara',e:'🎮',sc:'aki',q:'Akihabara Electric Town, Tokyo',
+ intro:"Tokyo's electric town: towering anime billboards, multi-story manga shops, arcades, and gaming stores glowing in every direction. A paradise for anyone who loves anime, manga, manhwa and games — so, Mohiy, this one is yours. 👀",
+ ch:'Pick an anime shop or gaming store to explore. Mohiy gets to choose one thing he would buy for Menna if we were really here. 👀',ph:'Which shop? What would you buy for me?…',btn:'CONTINUE TO SENSO-JI →'},
+{n:3,t:'Senso-ji Temple',e:'🏮',sc:'temple',q:'Senso-ji Temple, Asakusa, Tokyo',
+ intro:"Tokyo's oldest temple, in the old-town streets of Asakusa. Under the giant red Kaminarimon lantern, you walk past snack stalls and incense smoke toward quiet, golden-lit halls. Calm after the neon.",
+ ch:'If this were a real memory from our trip, what would you want us to remember most about it? ❤️',ph:'Our memory…',btn:'FINISH THE TRIP ✨'}];
+
+function skyline(seed,col,w){var s='',x=0,r=seed;while(x<700){r=(r*9301+49297)%233280;var bw=28+r%34,bh=50+(r%97);s+='<rect x="'+x+'" y="'+(220-bh)+'" width="'+bw+'" height="'+bh+'" fill="'+col+'"/>';for(var k=0;k<4;k++){r=(r*9301+49297)%233280;if(r%3){s+='<rect x="'+(x+5+(k%2)*13)+'" y="'+(228-bh+Math.floor(k/2)*16+(r%20))+'" width="6" height="7" fill="#f7d98a" opacity=".75"/>'}}x+=bw+2}return s}
+function scene(t){
+var sky='<defs><linearGradient id="g'+t+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1230"/><stop offset=".7" stop-color="'+(t=='temple'?'#7a3b5e':'#4a2a73')+'"/><stop offset="1" stop-color="#f4b6c8"/></linearGradient></defs><rect width="700" height="220" fill="url(#g'+t+')"/><circle cx="560" cy="50" r="22" fill="#f7efe0" opacity=".9"/>';
+var b=skyline(t=='night'?7:t=='shibuya'?21:t=='aki'?5:11,'#0a0f26');var x='';
+if(t=='shibuya')x='<rect x="40" y="70" width="150" height="60" fill="#ff3d81"/><rect x="250" y="50" width="120" height="80" fill="#2fd4ff"/><rect x="420" y="80" width="140" height="50" fill="#ffd23d"/><g fill="#fff" opacity=".85"><rect x="0" y="196" width="700" height="24" fill="#222"/>'+[0,1,2,3,4,5,6,7,8,9,10,11].map(function(i){return '<rect x="'+(i*60+10)+'" y="200" width="36" height="5"/>'}).join('')+'</g>';
+if(t=='aki')x='<text x="60" y="110" font-size="40" font-weight="700" fill="#ff3d81" font-family="sans-serif">ゲーム</text><text x="300" y="80" font-size="34" font-weight="700" fill="#2fd4ff" font-family="sans-serif">アニメ</text><text x="470" y="140" font-size="36" font-weight="700" fill="#ffd23d" font-family="sans-serif">マンガ</text><text x="150" y="160" font-size="30" fill="#b9ff3d" font-family="sans-serif">電気</text>';
+if(t=='temple')return '<svg viewBox="0 0 700 220" preserveAspectRatio="xMidYMid slice">'+sky+'<g fill="#c0392b"><rect x="250" y="110" width="12" height="100"/><rect x="438" y="110" width="12" height="100"/><rect x="235" y="100" width="230" height="14" fill="#8e1f1f"/><rect x="245" y="125" width="210" height="8"/><path d="M215 100 Q350 70 485 100 L470 88 Q350 58 230 88Z" fill="#2b2b2b"/></g><g><line x1="350" y1="114" x2="350" y2="128" stroke="#d4b36a"/><ellipse cx="350" cy="155" rx="22" ry="30" fill="#e74c3c"/><rect x="338" y="148" width="24" height="3" fill="#2b2b2b"/><rect x="338" y="158" width="24" height="3" fill="#2b2b2b"/></g><rect y="205" width="700" height="15" fill="#0a0f26"/></svg>';
+return '<svg viewBox="0 0 700 220" preserveAspectRatio="xMidYMid slice">'+sky+b+x+'</svg>'}
+document.querySelectorAll('[data-scene]').forEach(function(e){e.innerHTML=scene(e.dataset.scene)});
+
+function prog(i){return '<div class="prog">'+[1,2,3].map(function(n){return '<b class="'+(n<i?'d':n==i?'c':'')+'"></b>'}).join('')+'</div><div class="tag">Stop 0'+i+' of 03</div>'}
+stops.forEach(function(s){
+ var el=document.getElementById('s'+s.n),prev=s.n==1?"go('welcome')":'go('+(s.n-1)+')';
+ el.innerHTML=prog(s.n)+'<div class="scene">'+scene(s.sc)+'</div><h2>'+s.e+' '+s.t+'</h2><p style="line-height:1.65;margin-top:8px;opacity:.92">'+s.intro+'</p>'+
+ '<a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.q)+'">📍 OPEN IN GOOGLE MAPS</a>'+
+ '<div class="card"><div class="tag">Challenge</div><div class="q">'+s.ch+'</div><textarea id="a'+s.n+'" placeholder="'+s.ph+'"></textarea><div class="small">Saved while you browse. Everything stays on this device.</div></div>'+
+ '<div class="nav"><button class="btn ghost" onclick="'+prev+'">← BACK</button><button class="btn" id="b'+s.n+'" disabled onclick="go('+(s.n==3?"'final'":s.n+1)+')">'+s.btn+'</button></div>';
+ var ta=el.querySelector('textarea'),bt=el.querySelector('#b'+s.n);
+ ta.value=sg('ans'+s.n);bt.disabled=!ta.value.trim();
+ ta.addEventListener('input',function(){ss('ans'+s.n,ta.value);bt.disabled=!ta.value.trim()});
+});
+
+function go(id){
+ document.querySelectorAll('.screen').forEach(function(e){e.classList.remove('on')});
+ var t=typeof id=='number'?'s'+id:id;document.getElementById(t).classList.add('on');window.scrollTo({top:0,behavior:'smooth'});
+ if(t=='passes')mkQR();
+}
+function pass(name,seat){return '<div class="bp"><div class="m"><div class="tag" style="color:#8a6d2b">Boarding Pass · Economy of Love</div><h3>'+name+'</h3><div style="font-size:.85rem;margin-top:2px">Our Tokyo Adventure 🇯🇵</div><div class="r"><div>FROM<span>HOME ❤️</span></div><div>TO<span>TOKYO · HND</span></div><div>FLIGHT<span>MM 1214</span></div><div>GATE<span>M&M</span></div><div>SEAT<span>'+seat+'</span></div></div></div><div class="s"><div class="qr" data-qr>QR PLACEHOLDER<br>add link below</div><div style="font:.55rem \'Space Mono\'">SCAN TO TAKE OFF ✈️</div></div></div>'}
+document.getElementById('bps').innerHTML=pass('MENNA','14A')+pass('MOHIY','14B');
+function mkQR(){
+ var u=document.getElementById('url'),v=u.value.trim();if(!u.dataset.l){u.value=sg('url');v=u.value.trim();u.dataset.l=1}
+ ss('url',v);
+ document.querySelectorAll('[data-qr]').forEach(function(q){
+  q.innerHTML='';
+  if(/^https?:\/\/\S+$/.test(v)&&window.QRCode){new QRCode(q,{text:v,width:86,height:86,correctLevel:QRCode.CorrectLevel.M})}
+  else q.innerHTML='QR PLACEHOLDER<br>add link below';
+ });
+}
+var p=document.getElementById('petals');for(var i=0;i<16;i++){var d=document.createElement('i');d.style.left=Math.random()*100+'%';d.style.animationDuration=(9+Math.random()*10)+'s';d.style.animationDelay=(-Math.random()*15)+'s';p.appendChild(d)}
+</script></body></html>
